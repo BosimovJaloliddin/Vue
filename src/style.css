@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.content {
+  padding: 24px 18px;
+  background-color: #fafcf5;
+  border: none;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.16);
+}
