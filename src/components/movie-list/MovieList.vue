@@ -1,6 +1,6 @@
 <template>
   <ul class="content">
-    <MovieListItem props="hi" />
+    <MovieListItem />
     <MovieListItem />
     <MovieListItem />
   </ul>
