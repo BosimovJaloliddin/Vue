@@ -1,7 +1,7 @@
 <template>
-  <li class="movie-list" v-bind:class="[{ like: films.like }]">
-    <span class="movie-name">{{ films.name }}</span>
-    <span class="movie-seen">{{ films.seen }}</span>
+  <li class="movie-list" v-bind:class="[{ like: film.like }]">
+    <span class="movie-name">{{ film.name }}</span>
+    <span class="movie-seen">{{ film.seen }}</span>
     <div class="list-icons">
       <button
         type="button"
@@ -27,7 +27,7 @@
 
 export default {
   props: {
-    films: {
+    film: {
       type: Object,
       required: true,
     },

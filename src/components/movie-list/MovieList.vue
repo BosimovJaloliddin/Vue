@@ -1,6 +1,6 @@
 <template>
   <ul class="content">
-    <MovieListItem v-for="movie in movies" v-bind:films="movie" />
+    <MovieListItem v-for="movie in films" v-bind:film="movie" />
   </ul>
 </template>
 
@@ -11,15 +11,11 @@ export default {
   components: {
     MovieListItem,
   },
-  data() {
-    return {
-      movies: [
-        { id: 1, seen: 780, like: false, name: "Umar" },
-        { id: 2, seen: 780, like: true, name: "Usmon" },
-        { id: 3, seen: 780, like: false, name: "Halil" },
-        { id: 4, seen: 780, like: true, name: "Ali" },
-      ],
-    };
+  props: {
+    films: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>

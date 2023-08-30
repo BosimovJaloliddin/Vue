@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <h2>Barcha kinolar soni: {{ count }}</h2>
-    <h3>Sevimli film: {{ like }}</h3>
+    <h2>Barcha kinolar soni: {{ allFilms }}</h2>
+    <h3>Sevimli film: {{ likeFilms }}</h3>
   </div>
 </template>
 
@@ -14,6 +14,16 @@ export default {
       count: listFilms.length,
       like: listFilms.filter((v) => v.like).length,
     };
+  },
+  props: {
+    allFilms: {
+      type: Number,
+      required: true,
+    },
+    likeFilms: {
+      type: Number,
+      required: true,
+    },
   },
 };
 </script>

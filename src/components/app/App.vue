@@ -1,12 +1,15 @@
 <template>
   <div class="app">
     <div class="container">
-      <AppInfo />
+      <AppInfo
+        v-bind:allFilms="movies.length"
+        v-bind:likeFilms="movies.filter((v) => v.like).length"
+      />
       <div class="search-panel content">
         <SearchPanel />
         <AppFilter />
       </div>
-      <MovieList />
+      <MovieList v-bind:films="movies" />
       <MovieAddForm />
     </div>
   </div>
@@ -26,6 +29,16 @@ export default {
     MovieList,
     MovieAddForm,
     AppFilter,
+  },
+  data() {
+    return {
+      movies: [
+        { id: 1, seen: 780, like: false, name: "Umar" },
+        { id: 2, seen: 780, like: true, name: "Usmon" },
+        { id: 3, seen: 780, like: false, name: "Halil" },
+        { id: 4, seen: 780, like: true, name: "Ali" },
+      ],
+    };
   },
 };
 </script>
