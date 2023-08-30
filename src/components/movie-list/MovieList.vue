@@ -1,18 +1,25 @@
 <template>
   <ul class="content">
-    <MovieListItem />
-    <MovieListItem />
-    <MovieListItem />
+    <MovieListItem v-for="movie in movies" v-bind:films="movie" />
   </ul>
 </template>
 
 <script>
 import MovieListItem from "../movie-list-item/MovieListItem.vue";
-import { listFilms } from "../../data/data";
 
 export default {
   components: {
     MovieListItem,
+  },
+  data() {
+    return {
+      movies: [
+        { id: 1, seen: 780, like: false, name: "Umar" },
+        { id: 2, seen: 780, like: true, name: "Usmon" },
+        { id: 3, seen: 780, like: false, name: "Halil" },
+        { id: 4, seen: 780, like: true, name: "Ali" },
+      ],
+    };
   },
 };
 </script>
