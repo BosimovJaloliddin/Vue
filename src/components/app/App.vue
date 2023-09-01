@@ -10,7 +10,7 @@
         <AppFilter />
       </div>
       <MovieList v-bind:films="movies" />
-      <MovieAddForm />
+      <MovieAddForm @creatFilm="newFilm" />
     </div>
   </div>
 </template>
@@ -39,6 +39,11 @@ export default {
         { id: 4, seen: 780, like: true, name: "Ali" },
       ],
     };
+  },
+  methods: {
+    newFilm(item) {
+      (item?.name || item?.seen) && this.movies.push(item);
+    },
   },
 };
 </script>

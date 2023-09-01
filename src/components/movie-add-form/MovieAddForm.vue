@@ -1,20 +1,47 @@
 <template>
   <div class="content">
     <h3>Add new film</h3>
-    <form action="#" class="add-form">
-      <input class="name-film form-input" type="text" placeholder="Film nomi" />
+    <form action="#" class="add-form" @submit.prevent>
       <input
+        @change="name = $event.target.value"
+        v-bind:value="name"
+        class="name-film form-input"
+        type="text"
+        placeholder="Film nomi"
+      />
+      <input
+        @change="number = $event.target.value"
+        v-bind:value="number"
         class="count-film form-input"
         type="number"
         placeholder="Necha marta ko'tilgan"
       />
-      <button class="add-btn" type="submit">Add</button>
+      <button class="add-btn" type="submit" @click="getForm">Add</button>
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      name: "",
+      number: 0,
+    };
+  },
+  methods: {
+    getForm() {
+      const formInfo = {
+        name: this.name,
+        seen: this.number,
+        like: false,
+      };
+      this.name = "";
+      this.number = 0;
+      this.$emit("creatFilm", formInfo);
+    },
+  },
+};
 </script>
 
 <style scoped>
