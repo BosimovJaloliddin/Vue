@@ -1,6 +1,10 @@
 <template>
   <ul class="content">
-    <MovieListItem v-for="movie in films" v-bind:film="movie" />
+    <MovieListItem
+      v-for="movie in films"
+      v-bind:film="movie"
+      v-bind:key="movie.id"
+    />
   </ul>
 </template>
 

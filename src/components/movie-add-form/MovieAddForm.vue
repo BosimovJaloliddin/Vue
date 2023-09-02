@@ -35,6 +35,7 @@ export default {
         name: this.name,
         seen: this.number,
         like: false,
+        id: Date.now(),
       };
       this.name = "";
       this.number = 0;
