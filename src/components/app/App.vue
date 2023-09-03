@@ -9,7 +9,7 @@
         <SearchPanel />
         <AppFilter />
       </div>
-      <MovieList v-bind:films="movies" />
+      <MovieList v-bind:films="movies" @getLike="likeing" />
       <MovieAddForm @creatFilm="newFilm" />
     </div>
   </div>
@@ -43,6 +43,13 @@ export default {
   methods: {
     newFilm(item) {
       (item?.name || item?.seen) && this.movies.push(item);
+    },
+
+    likeing(id) {
+      this.movies = this.movies.map((v) => {
+        if (v.id === id) return { ...v, like: !v.like };
+        else return v;
+      });
     },
   },
 };

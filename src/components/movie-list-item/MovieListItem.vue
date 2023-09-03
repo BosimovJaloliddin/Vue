@@ -1,13 +1,9 @@
 <template>
   <li class="movie-list" v-bind:class="[{ like: film.like }]">
-    <span class="movie-name">{{ film.name }}</span>
+    <span v-on:click="getId" class="movie-name">{{ film.name }}</span>
     <span class="movie-seen">{{ film.seen }}</span>
     <div class="list-icons">
-      <button
-        type="button"
-        class="list-icon icon-cookie"
-        v-bind:class="[{ like: true }]"
-      >
+      <button type="button" class="list-icon icon-cookie">
         <i class="fas fa-cookie"></i>
       </button>
 
@@ -23,13 +19,16 @@
 </template>
 
 <script>
-// document.querySelector(".icon-cookie").classList.toggle("like");
-
 export default {
   props: {
     film: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    getId() {
+      this.$emit("getId", this.film.id);
     },
   },
 };
@@ -90,6 +89,7 @@ export default {
 }
 .list-icons .icon-star {
   color: rgb(225, 218, 10);
+  transition: all 1s ease;
   transform: translateX(30px);
   opacity: 0;
 }
