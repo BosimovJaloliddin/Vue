@@ -9,7 +9,7 @@
         <SearchPanel />
         <AppFilter />
       </div>
-      <MovieList v-bind:films="movies" @getLike="likeing" />
+      <MovieList v-bind:films="movies" @getId="getId" />
       <MovieAddForm @creatFilm="newFilm" />
     </div>
   </div>
@@ -33,10 +33,10 @@ export default {
   data() {
     return {
       movies: [
-        { id: 1, seen: 780, like: false, name: "Umar" },
-        { id: 2, seen: 780, like: true, name: "Usmon" },
-        { id: 3, seen: 780, like: false, name: "Halil" },
-        { id: 4, seen: 780, like: true, name: "Ali" },
+        { id: 1, seen: 780, favourite: true, like: false, name: "Umar" },
+        { id: 2, seen: 780, favourite: false, like: true, name: "Usmon" },
+        { id: 3, seen: 780, favourite: true, like: false, name: "Halil" },
+        { id: 4, seen: 780, favourite: false, like: true, name: "Ali" },
       ],
     };
   },
@@ -45,9 +45,9 @@ export default {
       (item?.name || item?.seen) && this.movies.push(item);
     },
 
-    likeing(id) {
+    getId({ id, prop }) {
       this.movies = this.movies.map((v) => {
-        if (v.id === id) return { ...v, like: !v.like };
+        if (v.id === id) return { ...v, [prop]: !v[prop] };
         else return v;
       });
     },

@@ -1,9 +1,20 @@
 <template>
-  <li class="movie-list" v-bind:class="[{ like: film.like }]">
-    <span v-on:click="getId" class="movie-name">{{ film.name }}</span>
+  <li
+    class="movie-list"
+    v-bind:class="[{ like: film.like, favourite: film.favourite }]"
+  >
+    <span
+      v-on:click="$emit('getId', { id: film.id, prop: 'like' })"
+      class="movie-name"
+      >{{ film.name }}</span
+    >
     <span class="movie-seen">{{ film.seen }}</span>
     <div class="list-icons">
-      <button type="button" class="list-icon icon-cookie">
+      <button
+        v-on:click="$emit('getId', { id: film.id, prop: 'favourite' })"
+        type="button"
+        class="list-icon icon-cookie"
+      >
         <i class="fas fa-cookie"></i>
       </button>
 
@@ -24,11 +35,6 @@ export default {
     film: {
       type: Object,
       required: true,
-    },
-  },
-  methods: {
-    getId() {
-      this.$emit("getId", this.film.id);
     },
   },
 };
@@ -97,7 +103,7 @@ export default {
   opacity: 1;
   transform: translateX(0px);
 }
-.movie-list.like .movie-name {
+.movie-list.favourite .movie-name {
   color: #e09f3e;
 }
 .movie-list:last-child {

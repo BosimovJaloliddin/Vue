@@ -4,7 +4,7 @@
       v-for="movie in films"
       v-bind:film="movie"
       v-bind:key="movie.id"
-      @getId="$emit('getLike', movie.id)"
+      @getId="$emit('getId', $event)"
     />
   </ul>
 </template>
