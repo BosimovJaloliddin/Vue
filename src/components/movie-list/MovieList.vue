@@ -5,6 +5,7 @@
       v-bind:film="movie"
       v-bind:key="movie.id"
       @getId="$emit('getId', $event)"
+      @onDel="$emit('onDel', $event)"
     />
   </ul>
 </template>

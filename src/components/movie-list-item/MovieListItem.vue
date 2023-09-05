@@ -18,7 +18,11 @@
         <i class="fas fa-cookie"></i>
       </button>
 
-      <button type="button" class="list-icon icon-trash">
+      <button
+        @click="$emit('onDel', film.id)"
+        type="button"
+        class="list-icon icon-trash"
+      >
         <i class="fas fa-trash"></i>
       </button>
 

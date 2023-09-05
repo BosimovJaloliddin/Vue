@@ -9,7 +9,7 @@
         <SearchPanel />
         <AppFilter />
       </div>
-      <MovieList v-bind:films="movies" @getId="getId" />
+      <MovieList v-bind:films="movies" @getId="getId" @onDel="removeItem" />
       <MovieAddForm @creatFilm="newFilm" />
     </div>
   </div>
@@ -50,6 +50,9 @@ export default {
         if (v.id === id) return { ...v, [prop]: !v[prop] };
         else return v;
       });
+    },
+    removeItem(id) {
+      this.movies = this.movies.filter((v) => v.id !== id);
     },
   },
 };
