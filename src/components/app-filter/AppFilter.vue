@@ -1,13 +1,53 @@
 <template>
   <div class="filter-btns">
-    <button class="filter-btn b-left active">Barcha kinolar</button>
-    <button class="filter-btn">Mashxur kinolar</button>
-    <button class="filter-btn b-right">Eng ko'p ko'rilgan kinolar</button>
+    <button
+      @click="getCategory('all')"
+      class="filter-btn b-left"
+      :class="[category === 'all' ? 'active' : 'filter-btn']"
+    >
+      Barcha kinolar
+    </button>
+    <button
+      @click="getCategory('like')"
+      class="filter-btn"
+      :class="[category === 'like' ? 'active' : 'filter-btn']"
+    >
+      Mashxur kinolar
+    </button>
+    <button
+      @click="getCategory('popular')"
+      class="filter-btn b-right"
+      :class="[category === 'popular' ? 'active' : 'filter-btn']"
+    >
+      Eng ko'p ko'rilgan kinolar
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      category: this.pushCategoryName,
+    };
+  },
+  props: {
+    categoryName: {
+      type: Function,
+      required: true,
+    },
+    pushCategoryName: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    getCategory(value) {
+      this.categoryName(value);
+      this.category = value;
+    },
+  },
+};
 </script>
 
 <style scoped>
