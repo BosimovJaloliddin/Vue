@@ -1,25 +1,13 @@
 <template>
   <div class="filter-btns">
     <button
-      @click="getCategory('all')"
-      class="filter-btn b-left"
-      :class="[category === 'all' ? 'active' : 'filter-btn']"
-    >
-      Barcha kinolar
-    </button>
-    <button
-      @click="getCategory('like')"
+      v-for="btn in btnCategory"
+      :key="btn.id"
+      @click="getCategory(btn.status)"
       class="filter-btn"
-      :class="[category === 'like' ? 'active' : 'filter-btn']"
+      :class="[category === btn.status ? 'active' : 'filter-btn']"
     >
-      Mashxur kinolar
-    </button>
-    <button
-      @click="getCategory('popular')"
-      class="filter-btn b-right"
-      :class="[category === 'popular' ? 'active' : 'filter-btn']"
-    >
-      Eng ko'p ko'rilgan kinolar
+      {{ btn.title }}
     </button>
   </div>
 </template>
@@ -28,6 +16,11 @@
 export default {
   data() {
     return {
+      btnCategory: [
+        { id: 1, title: "Barcha kinolar", status: "all" },
+        { id: 2, title: "Mashxur kinolar", status: "like" },
+        { id: 3, title: "Eng ko'p ko'rilgan kinolar", status: "popular" },
+      ],
       category: this.pushCategoryName,
     };
   },
