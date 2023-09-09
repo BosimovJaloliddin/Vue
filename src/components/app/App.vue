@@ -6,10 +6,14 @@
         v-bind:likeFilms="movies.filter((v) => v.like).length"
       />
       <div class="search-panel content">
-        <SearchPanel />
+        <SearchPanel :getValue="searchFilm" />
         <AppFilter />
       </div>
-      <MovieList v-bind:films="movies" @getId="getId" @onDel="removeItem" />
+      <MovieList
+        v-bind:films="searchListFilms(movies, searchVal)"
+        @getId="getId"
+        @onDel="removeItem"
+      />
       <MovieAddForm @creatFilm="newFilm" />
     </div>
   </div>
@@ -38,6 +42,7 @@ export default {
         { id: 3, seen: 780, favourite: true, like: false, name: "Halil" },
         { id: 4, seen: 780, favourite: false, like: true, name: "Ali" },
       ],
+      searchVal: "",
     };
   },
   methods: {
@@ -53,6 +58,16 @@ export default {
     },
     removeItem(id) {
       this.movies = this.movies.filter((v) => v.id !== id);
+    },
+
+    searchListFilms(arr, v) {
+      if (v.length === 0) return arr;
+
+      return arr.filter((val) => val.name.toLowerCase().includes(v));
+    },
+
+    searchFilm(value) {
+      this.searchVal = value.toLowerCase();
     },
   },
 };

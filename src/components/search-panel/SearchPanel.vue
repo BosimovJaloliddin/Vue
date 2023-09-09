@@ -1,12 +1,23 @@
 <template>
   <div class="wrapper">
-    <input type="text" placeholder="Search film" />
-    <div></div>
+    <input v-on:input="onChange" type="text" placeholder="Search film" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    getValue: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    onChange(e) {
+      this.getValue(e.target.value);
+    },
+  },
+};
 </script>
 
 <style scoped>
